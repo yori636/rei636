@@ -1,0 +1,2384 @@
+@charset "utf-8";
+
+/*共通部分
+---------------------------------*/
+body{
+  font-family: "Yu ]gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+/*========= 上部固定させるためのCSS ===============*/
+#header{
+  height: 70px;/*高さ指定*/
+  width:100%;/*横幅指定*/
+  /*以下はレイアウトのためのCSS*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:#333;
+  color:#fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/*JSを使いfixedクラスが付与された際の設定*/
+#header.fixed{
+  position: fixed;/*fixedを設定して固定*/
+    z-index: 999;/*最前面へ*/
+    top:0;/*位置指定*/
+    left:0;/*位置指定*/
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+.logo {
+  width: 210px;
+  margin-top: 14px;
+}
+
+h2{
+  font-size:1.2rem;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+p{
+  margin-top:20px;  
+}
+
+small{
+  background:#333;
+  color:#fff;
+  display: block;
+  padding:30px;
+}
+.footer-nav {
+  display: flex;
+  background:#333;
+  color:#fff;
+  justify-content: center;
+}
+.footer-nav li {
+  margin: 0 .75rem;
+  list-style: none;
+  padding:30px;
+}
+.footer-nav a:hover {
+  color: rgb(128, 119, 119);
+}
+.footer-nav a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+
+nav ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li a{
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  padding:10px;
+  transition:all 0.3s;
+}
+
+nav ul li.current a,
+nav ul li a:hover{
+  color:#666; 
+}
+
+
+section{
+  padding:30px;
+}
+
+section:nth-child(2n){
+  background:#f3f3f3; 
+}
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+  position:relative;
+z-index: 1;
+/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+/*　背景画像設定　*/
+
+.slider-item01 {
+  background-image: url(../images/one.jpg);
+}
+
+.slider-item02 {
+  background-image: url(../images/two.jpg);
+}
+
+.slider-item03 {
+  background-image: url(../images/three.jpg);
+}
+
+.slider-item {
+  width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+  height:100vh;/*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+  background-repeat: no-repeat;/*背景画像をリピートしない*/
+  background-position: center;/*背景画像の位置を中央に*/
+  background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+
+/*矢印の設定*/
+
+.slick-prev, 
+.slick-next {
+  position: absolute;
+z-index: 3;
+  top: 42%;
+  cursor: pointer;/*マウスカーソルを指マークに*/
+  outline: none;/*クリックをしたら出てくる枠線を消す*/
+  border-top: 2px solid #fff;/*矢印の色*/
+  border-right: 2px solid #fff;/*矢印の色*/
+  height: 25px;
+  width: 25px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+  left:2.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+  right:2.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+position: relative;
+z-index: 3;
+  text-align:center;
+margin:-50px 0 0 0;/*ドットの位置*/
+}
+
+.slick-dots li {
+  display:inline-block;
+margin:0 5px;
+}
+
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width:8px;/*ドットボタンのサイズ*/
+  height:8px;/*ドットボタンのサイズ*/
+  display:block;
+  border-radius:50%;
+  background:#fff;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+  background:#333;/*ドットボタンの現在地表示の色*/
+}
+
+
+/*tabの形状*/
+.tab{
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab2{
+  margin-bottom: 130px;
+}
+.tab li a{
+  display: block;
+  background:#ddd;
+  margin:0 2px;
+  padding:10px 20px;
+}
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a{
+  background:#fff;
+}
+.rank {
+  list-style:none;/*デフォルトの指定解除*/
+  display:flex;
+  }
+.ranking{
+  text-align: center;
+}
+
+
+/*エリアの表示非表示と形状*/
+.area {
+  display: none;/*はじめは非表示*/
+  opacity: 0;/*透過0*/
+  background: #fff;
+  padding:50px 20px;
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.area.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+body{
+  background:rgb(255, 255, 255);
+}
+
+ul{
+  list-style:none;
+}
+
+a{
+  color:#333;
+  text-decoration: none;
+}
+
+.wrapper{
+  width:100%;
+  max-width: 960px;
+  margin:70px auto 10px;
+    background:#fefefe;
+}
+
+.area h2{
+  font-size:1.3rem;
+  margin:0 0 20px 10px;
+}
+
+.area li{
+  padding: 10px; 
+  border-bottom: 1px solid #ddd;
+}
+
+
+/* ボタン共通設定 */
+.btn04 {
+  /*線の基点とするためrelativeを指定*/
+position: relative;
+  /*ボタンの形状*/
+display:inline-block;
+  padding: 10px 100px;
+
+color:#333;
+border:1px solid #ccc;
+  text-decoration: none;
+  outline: none;
+  /*はみ出す背景色を隠す*/
+overflow: hidden;
+}
+
+/*hoverした際のボタンの形状*/
+.btn04:hover {
+color:#ccc;
+border-color: transparent;
+  /*色の変化を遅らせる*/
+transition-delay: .6s;
+}
+
+/*線の設定*/
+.btn04 span{
+  display: block;
+  z-index: 2;
+}
+
+/*== 線から塗に変化（中央から外） */
+
+/*線の設定*/
+.bordercenter span::before,
+.bordercenter span::after{
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  /*線の形状*/
+  width: 100%;
+  height:1px;
+  background: #333;
+  /*アニメーションの設定*/
+transition: all .3s;
+  transform: scale(0,1);
+  transform-origin: center;
+}
+
+/*上線*/
+.bordercenter span::before {
+  left:0;
+  top:0;
+}
+
+/*下線*/
+.bordercenter span::after {
+  left:0;
+  bottom:0;
+}
+
+/*hoverをすると線が伸びる*/
+.bordercenter:hover span::before,
+.bordercenter:hover span::after{
+  transform: scale(1,1);
+}
+
+/*背景の設定*/
+.bordercenter::before{
+content: '';
+  /*絶対配置で線の位置を決める*/
+position: absolute;
+left: 0;
+  top:0;
+z-index: -1;
+  /*背景の形状*/
+height: 100%;
+width:100%;
+background:#333;
+  /*アニメーションの設定*/
+transition: all .3s;
+  transform: scale(0,1);
+  transform-origin: center;
+}
+
+/*hoverをすると背景が伸びる*/
+.bordercenter:hover::before{
+width: 100%;
+  /*0.4秒遅れてアニメーション*/
+transition-delay: .4s;
+  transform: scale(1,1);
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+body{
+  vertical-align:middle; 
+  text-align: center;
+}
+
+p{
+  margin: 0 0 10px 0;
+}
+
+
+/* サービスに関する設定 */
+.p-services {
+  background-color: #e3e3e3; 
+  padding: 80px 0px 100px 150px;
+  margin: 100px 0;
+}
+
+.p-services__list{
+list-style:none;/*デフォルトの指定解除*/
+display:flex;
+margin-block-start: 1em;
+margin-block-end: 1em;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+padding-inline-start: 40px;
+}
+
+.megane{
+  margin: 0 0 0 150px;
+}
+
+/* スライドショーのミニ写真に関する設定 */
+.grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 6%;
+  margin-bottom: 50px;
+  margin-top: auto;
+}
+.grid2{
+  margin-top: 150px;
+}
+
+.big-box {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+.big-box img {
+    height: 98%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.picup {
+  font-size: 2em;
+  font-family: 'Heebo', sans-serif;
+}
+
+.picup2 {
+  font-size: 2em;
+  margin-top: 60px;
+  font-family: 'Heebo', sans-serif;
+}
+
+
+.picup3 {
+  font-size: 2em;
+  margin-left: 30px;
+  font-family: 'Heebo', sans-serif;
+}
+
+.picup4 {
+  font-size: 2em;
+  margin-top: 90px;
+}
+
+.picup45 {
+  font-size: 2em;
+  margin-top: 90px;
+  font-family: 'Heebo', sans-serif;
+}
+
+.picup5 {
+  font-size: 25px;
+  margin-top: 150px;
+}
+
+.picup6 {
+  font-size: 40px;
+  margin-top: 90px;
+}
+
+@media (max-width: 600px) {
+.big-box {
+    grid-column: auto;
+    grid-row: auto;
+}
+.big-box img {
+    height: auto;
+}
+}
+
+/* 背景が左から出現＋テキスト */
+.bgLR{
+  position:relative;/*テキストの基点となる位置を定義*/
+}
+
+.bgLR span.mask{
+  position:relative;/*背景色の基点となる位置を定義*/
+    display: block;
+    line-height: 0;/*行の高さを0にする*/
+    overflow: hidden;/*拡大してはみ出る要素を隠す*/
+}
+
+.bgLR span.mask::before{
+  content:"";
+  position: absolute;
+  z-index: 2;
+  left:0;
+  top:0;
+  opacity:0;
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+    transform: translateX(-100%);
+  background:#333;/*背景色*/
+  width:100%;
+  height: 100%; 
+}
+
+.bgLR:hover span.mask::before{/*hoverした時の変化*/
+  opacity:1;
+  transform: translateX(0);
+}
+
+.bgLR span.cap{
+  position: absolute;
+  opacity:0;
+  transition: .5s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+  z-index:3;/*テキストを前面に出す*/
+  top: 50%;
+    left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    line-height: 1.5;/*行の高さを1.5にする*/
+}
+
+.bgLR:hover span.cap{/*hoverした時の変化*/
+  opacity:1;
+}
+
+.cap{
+  text-align: left;
+}
+
+
+/*　透過　*/
+
+.opacity img{
+  opacity:1;
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+}
+
+.opacity a:hover img{/*hoverした時の変化*/
+  opacity:0.8;/*透過具合を変更したい場合はこの数値を変更*/
+}
+
+/*　インフォメーション　*/
+.btn-footer{
+  margin-bottom: 100px;
+}
+
+.grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 6%;
+  margin-bottom: 50px;
+}
+
+.item-p{
+  text-align: left;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.pagination a:hover {
+  background: #93d8d0;
+  color: #fff;
+}
+.pagination a,
+.pagination .current {
+  border-radius: 50%;
+  padding-top: 4px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin: 0 6px;
+}
+.pagination .current {
+  background: #ccc;
+  color: #fff;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 10px 100px;
+  text-align: center;
+  width: 100%;
+}
+.btn-secondary {
+  color: rgb(255, 255, 255);
+  background: #333;
+}
+.btn-secondary:hover {
+  background: rgb(106, 106, 106);
+}
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider-second {
+  position:relative;
+z-index: 1;
+/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+
+.slider-top,
+.slider-bottom {
+  height: 50vh;/*スライダー上下の縦幅を画面の高さの半分（50vh）にする*/
+}
+
+/*　背景画像設定　*/
+
+.slider-item04 {
+  background-image: url(../images/Slideshow-one.jpg);
+}
+
+.slider-item05 {
+  background-image: url(../images/Slideshow-five.jpg);
+}
+
+.slider-item06 {
+  background-image: url(../images/Slideshow-third.jpg);
+}
+
+.slider-item07 {
+  background-image: url(../images/Slideshow-second.jpg);
+}
+
+.slider-item08 {
+  background-image: url(../images/Slideshow-six.jpg);
+}
+
+.slider-item09 {
+  background-image: url(../images/Slideshow-four.jpg);
+}
+
+.slideshow {
+  width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+  height:50vh;/*各スライダーの縦幅を画面の高さの半分（50vh）にする*/
+  background-repeat: no-repeat;/*背景画像をリピートしない*/
+  background-position: center;/*背景画像の位置を中央に*/
+  background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+
+
+.flex {
+  display: flex; /*横並び*/
+  margin-top: 90px;
+}
+.flex .image {
+  width: 670px; /*画像サイズ指定*/
+  margin: 70px 0px 0px 130px ;
+  padding: 0;
+  position: relative;
+}
+.flex .image img {
+  width: 100%;
+  height: auto;
+}
+.flex .right {
+  margin: 70px 50px;
+  padding: 0;
+  text-align: left;
+}
+
+.sample-box {
+  position: relative;
+}
+.flex .title {
+  margin: 100px 130px 60px 30px;
+  padding: 0;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.sunshine{
+  color: #f2e32b;
+}
+
+/* ボタン共通設定 */
+.btn03{
+  /*影の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  text-align: center;
+  background: transparent;
+border-radius: 25px;
+border: solid 1px #f2e32b;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: all 0.2s ease;
+  margin: 30px 0 100px 30px;
+  
+  font-weight: bold;
+}
+
+/*hoverをした後のボタンの形状*/
+.btn03:hover{
+border-color:transparent; 
+}
+
+/*ボタンの中のテキスト*/
+.btn03 span {
+position: relative;
+z-index: 2;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  /*テキストの形状*/
+display: block;
+  padding: 10px 30px;
+background:#f2e32b;
+border-radius: 25px;
+color:#333;
+  /*アニメーションの指定*/
+  transition: all 0.3s ease;
+}
+
+/*== 下に押し込まれる（立体が平面に） */
+
+/*影の設定*/
+.pushdown:before {
+  content:"";
+  /*絶対配置で影の位置を決める*/
+  position: absolute;
+z-index: -1;
+  top:4px;
+  left:0;
+  /*影の形状*/
+  width: 100%;
+  height: 100%;
+border-radius: 25px;
+  background-color: #bbae23;
+}
+
+/*hoverの際にY軸に4pxずらす*/
+.pushdown:hover span {
+background-color: #333;
+color: #fff;
+transform: translateY(4px);
+}
+
+.Sunglasses-Product-List{
+  display: flex;
+  margin: 30px 800px 100px 100px;
+}
+
+.Sunglasses-Product-List2{
+  display: flex;
+  margin: 30px 400px 50px 400px;
+}
+
+.btn033{
+  /*影の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  text-align: center;
+  background: transparent;
+border-radius: 25px;
+border: solid 1px #f2e32b;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: all 0.2s ease;
+  margin: 30px 50px 100px 40px; 
+  font-weight: bold;
+}
+
+/*hoverをした後のボタンの形状*/
+.btn033:hover{
+border-color:transparent; 
+}
+
+/*ボタンの中のテキスト*/
+.btn033 span {
+position: relative;
+z-index: 2;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  /*テキストの形状*/
+display: block;
+  padding: 10px 30px;
+background:#f2e32b;
+border-radius: 25px;
+color:#333;
+  /*アニメーションの指定*/
+  transition: all 0.3s ease;
+}
+
+.flex .text {
+  margin: 10px 130px 0 30px;
+  opacity: 1;
+  font-size: 14px;
+  letter-spacing: .08em;
+  line-height: 2.4;
+}
+
+
+.btn0333{
+  /*影の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  text-align: center;
+  background: transparent;
+border-radius: 25px;
+border: solid 1px #333;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: all 0.2s ease;
+  margin: 30px 0 100px 30px;
+  
+  font-weight: bold;
+}
+
+/*hoverをした後のボタンの形状*/
+.btn0333:hover{
+border-color:transparent; 
+}
+
+/*ボタンの中のテキスト*/
+.btn0333 span {
+position: relative;
+z-index: 2;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  /*テキストの形状*/
+display: block;
+  padding: 10px 30px;
+background:#ffffff;
+border-radius: 25px;
+color:#333;
+  /*アニメーションの指定*/
+  transition: all 0.3s ease;
+}
+
+/*== 下に押し込まれる（立体が平面に） */
+
+/*影の設定*/
+.pushdown333:before {
+  content:"";
+  /*絶対配置で影の位置を決める*/
+  position: absolute;
+z-index: -1;
+  top:4px;
+  left:0;
+  /*影の形状*/
+  width: 100%;
+  height: 100%;
+border-radius: 25px;
+  background-color: #333;
+}
+
+/*hoverの際にY軸に4pxずらす*/
+.pushdown333:hover span {
+background-color: #2c85f9;
+color: #ffffff;
+transform: translateY(4px);
+}
+
+.Clear-Sunglasses-List{
+  display: flex;
+  margin: -100px 400px 80px 400px;
+}
+
+
+
+/*　サングラス　*/
+.right-side{
+  margin: -120px 10px 0 760px;
+}
+
+.left-side{
+  margin: -400px 740px 100px 50px;
+}
+
+.grid3 {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 6%;
+  margin-bottom: 50px;
+}
+
+.item3{
+  background-color: #cacaca;
+  height: 380px;
+
+}
+
+.item3-p{
+  text-align: center;
+  text-decoration: underline double;
+  cursor: pointer;
+}
+
+.item3-title{
+  margin-bottom: 60px;
+  font-size: 25px; 
+}
+
+.fade{
+  opacity : 0;
+  transition: opacity 3s;
+}
+ 
+.fade.view{
+  opacity: 1;
+}
+
+.standard{
+  margin-top: 150px;
+  display: flex;
+}
+
+.standard1{
+  margin: -80px 10px 10px 450px;
+}
+
+.standard-title{
+  font-size: 25px; 
+}
+
+.standard-p{
+  overflow-wrap:  break-word; 
+  margin-top: 30px;
+}
+
+.standard2{
+  margin: -200px 900px 50px 140px;
+  text-align: left;
+}
+
+.Classic1{
+  margin: -120px 10px 10px 450px;
+}
+
+.Classic-title{
+  font-size: 25px; 
+}
+
+.Classic-p{
+  overflow-wrap:  break-word; 
+  margin-top: 30px;
+}
+
+.Classic2{
+  margin: -200px 900px 50px 100px;
+  text-align: left;
+}
+
+.Modern1{
+  margin: -120px 10px 10px 450px;
+}
+
+.Modern-title{
+  font-size: 25px; 
+}
+
+.Modern-p{
+  overflow-wrap:  break-word; 
+  margin-top: 30px;
+}
+
+.Modern2{
+  margin: -200px 830px 50px 100px;
+  text-align: left;
+}
+
+
+.grid4 {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 6%;
+  margin-bottom: 60px;
+}
+
+.item4{
+  background-color: #cacaca;
+  height: 380px;
+}
+
+.item4-p{
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+.item4-title{
+  margin-bottom: 60px;
+}
+
+.item5{
+  background-color: #ffffff;
+  height: 380px;
+}
+
+
+.grid6 {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 20px;
+  margin-bottom: 200px;
+}
+
+.item6{
+  height: 380px;
+}
+
+.item6-p{
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 30px;
+  line-height: 17px;
+}
+
+.item6-title{
+  margin-bottom: 60px;
+}
+
+.item6-span{
+  color: rgb(137, 137, 137);
+  font-size: 12px;
+}
+
+.item6-span1{
+  font-size: 13px;
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+.bgextend1{
+  margin:-100px 10px 0px 40px;
+  text-align: left;
+  font-size:37px;
+  font-weight: bold;
+}
+
+@media screen and (max-width:768px){
+  .bgextend1{
+        font-size:0.9rem;
+    }  
+}
+
+/*==================================================
+背景色が伸びて出現
+===================================*/
+
+/*全共通*/
+
+.bgextend{
+  animation-name:bgextendAnimeBase;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  position: relative;
+  overflow: hidden;/*　はみ出た色要素を隠す　*/
+  opacity:0;
+  background: rgb(217, 216, 216);
+}
+
+@keyframes bgextendAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;  
+}
+}
+
+/*中の要素*/
+.bgappear{
+  animation-name:bgextendAnimeSecond;
+  animation-duration:1s;
+  animation-delay: 0.6s;
+  animation-fill-mode:forwards;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond{
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+}
+}
+
+/*左から右*/
+.bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(217, 216, 216);/*伸びる背景色の設定*/
+}
+@keyframes bgLRextendAnime{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+  50.001% {
+    transform-origin:right;
+  }
+  100% {
+    transform-origin:right;
+    transform:scaleX(0);
+  }
+}
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.bgappearTrigger,
+.bgLRextendTrigger{
+    opacity: 0;
+}
+
+/*ブランド*/
+.Supple{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.Supple span{
+  color: rgb(225, 7, 163);/*文字は白に*/
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Cardo', serif;
+  line-height: 150px;
+}
+
+
+.Supple p{
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  top: 10px;
+  left: 70px;
+  margin: 50px 900px 0px 130px;
+  text-align: left;
+}
+
+.fashinable{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.fashinable span{
+  color: rgb(151, 81, 2);/*文字は白に*/
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Oleo Script', cursive;
+  line-height: 120px;
+}
+
+
+.fashinable p{
+  position: absolute;/*絶対配置*/
+  color: rgb(43, 43, 43);/*文字は白に*/
+  top: 10px;
+  left: 50px;
+  margin: 0px 200px 0px 760px;
+  text-align: left;
+}
+
+.MEGANE{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.MEGANE span{
+  color: rgb(48, 48, 48);/*文字は白に*/
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Gantari', sans-serif;
+  letter-spacing: 10px;
+  line-height: 130px;
+}
+
+.MEGANE p{
+  position: absolute;/*絶対配置*/
+  color: rgb(48, 48, 48);/*文字は白に*/
+  top: 10px;
+  left: 70px;
+  margin: 20px 900px 0px 130px;
+  text-align: left;
+}
+
+.children{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.children span{
+  color: rgb(48, 48, 48);/*文字は白に*/
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Hind Guntur', sans-serif;
+  letter-spacing: 10px;
+  line-height: 130px;
+}
+
+.children p{
+  position: absolute;/*絶対配置*/
+  color: rgb(48, 48, 48);/*文字は白に*/
+  top: 25px;
+  left: 180px;
+  margin: 20px 850px 0px 50px;
+  text-align: left;
+}
+
+.Light{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.Light span{
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Gantari', sans-serif;
+  letter-spacing: 10px;
+  line-height: 130px;
+  top: 30px;
+  right: 70px;
+  margin: 20px 340px 0px 800px;
+  text-align: left;         
+  position: absolute;/*絶対配置*/
+}
+
+.Lightp{
+  position: absolute;/*絶対配置*/
+  color: rgb(48, 48, 48);/*文字は白に*/
+  top: 10px;
+  right: 70px;
+  margin:  170px 130px 0px 900px;
+  text-align: left;            
+}
+
+.fuchidori {
+  color: rgb(225, 217, 63);
+  text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+              0px 1px 0 #FFF,  0-1px 0 #FFF,
+              -1px 0 0 #FFF, 1px 0 0 #FFF;
+}
+
+.Sceane{
+  margin: 30px 10px 30px 10px;
+  position: relative;/*相対配置*/
+}
+
+.Sceane span{
+  text-align: left;
+  font-size: 70px;
+  font-family: 'Tauri', sans-serif;
+  letter-spacing: 10px;
+  line-height: 130px;
+  top: 30px;
+  right: 70px;
+  margin: 20px 370px 0px 770px;
+  text-align: left;         
+  position: absolute;/*絶対配置*/
+}
+
+.Sceanep{
+  position: absolute;/*絶対配置*/
+  color: rgb(48, 48, 48);/*文字は白に*/
+  top: 10px;
+  right: 70px;
+  margin:  170px 130px 0px 800px;
+  text-align: left;            
+}
+
+.Sceane2 {
+  color: rgb(255, 255, 255);
+  text-shadow:1px 1px 0 rgb(88, 88, 88), -1px -1px 0 rgb(88, 88, 88),
+              -1px 1px 0 rgb(88, 88, 88), 1px -1px 0 rgb(88, 88, 88),
+              0px 1px 0 rgb(88, 88, 88),  0-1px 0 rgb(88, 88, 88),
+              -1px 0 0 rgb(88, 88, 88) , 1px 0 0 rgb(88, 88, 88);
+}
+
+
+/*========= 検索窓のためのCSS ===============*/
+
+/*検索窓のエリア*/
+#search-wrap {
+z-index: 2;/*最前面に設定。数字は変更可*/
+margin-top: 50px;
+}
+
+/*テキスト入力input設定*/
+#search-text{
+-webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
+width: 430px;
+padding: 20px 0 100px 30px;
+box-shadow: 0 2px rgba(6,0,1,.26);
+height: 50px;
+padding: 20px 70px;
+border: none;
+background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 17px center;/*虫眼鏡アイコンを背景に表示*/
+background-size: 25px 25px;
+outline: none;
+cursor: pointer;/*カーソルを指マークに*/
+}
+
+/*クリアサングラス*/
+.flex-uv {
+  display: flex; /*横並び*/
+  margin-top: 90px;
+}
+.flex-uv .image {
+  width: 490px; /*画像サイズ指定*/
+  margin: 10px 0px 0px 200px ;
+  padding: 0;
+  position: relative;
+}
+.flex-uv .image img {
+  width: 100%;
+  height: auto;
+}
+.flex-uv .right {
+  margin: 40px 50px;
+  padding: 0;
+  text-align: left;
+}
+
+.sample-box-uv {
+  position: relative;
+}
+.flex-uv .title {
+  margin: 0px 200px 3px 40px;
+  padding: 0;
+  font-size: 30px;
+}
+
+.right-boder{
+  width: 65%;
+  border-bottom: 3px double rgb(131, 131, 131);
+  margin-bottom: 120px;
+  margin-left: 40px;
+}
+
+.right-side-uv{
+  margin: 100px 0px 0 35px;
+  position: relative;
+  width: 490px;
+}
+
+.decoration{
+  margin: -850px 0px 0 440px;
+  position: absolute;
+  width: 208px;
+}
+
+.bottom{
+  margin: -200px 0px 100px 150px;
+  width: 500px;
+}
+
+.clear-sunglasses{
+  font-size: 30px;
+  margin: 90px 600px 50px 250px;
+  font-weight: bold;
+  line-height:75px;
+  letter-spacing: 3px;
+}
+
+.clear-sunglasses1{
+  text-align: left;
+}
+
+.clear-sunglasses2{
+  margin-left: 250px;
+  margin-bottom: 10px;
+  line-height:50px;
+  font-weight: bold;
+}
+
+.Transparent-Sunglasses{
+  color:#2c85f9 ;
+}
+
+.illustration{
+  margin: -600px 10px 150px 900px;
+  width: 450px;
+}
+
+.Lineup1{
+  margin: 190px 700px 0px 220px;
+  display: flex;
+}
+
+.Lineup{
+  font-size: 20px;
+}
+
+.right-boder2{
+  width: 45%;
+  border-bottom: 3px double rgb(131, 131, 131);
+  margin:15px 20px 40px 20px;
+}
+
+.flex5 {
+  display: flex; /*横並び*/
+  margin-left: 30px;
+}
+.flex5 .image {
+  width: 600px; /*画像サイズ指定*/
+  margin: 50px 0px 0px 130px ;
+  padding: 0;
+  position: relative;
+}
+.flex5 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex5 .right {
+  padding: 0;
+  text-align: left;
+  margin: 10px 150px 0px 80px;
+}
+
+.sample5-box {
+  position: relative;
+}
+.flex5 .title {
+  margin-top: 50px;
+  padding: 0;
+  font-size: 70px;
+  font-family: 'Cardo', serif;
+}
+
+.flex5 .text1{
+  margin-top: 80px;
+  margin-left: 30px;
+  font-size: 30px;
+  font-family: 'Cardo', serif;
+}
+
+.flex5 .text2{
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
+.flex5 .text3{
+  margin-top: 40px;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.flex5 .text{
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
+.right-boder3{
+  border-width: 450px;
+  border-bottom: 3px double rgb(131, 131, 131);
+  margin-top: 100px;
+  margin-left: -120px;
+  margin-right: -50px;
+  position: relative;
+}
+
+.right-boder4 {
+  margin-left: 100px;
+  margin-top: -500px;
+  height: 750px;
+  border:double 1px rgb(131, 131, 131);
+}
+
+.CPR1330A-3N{
+  display: flex;
+}
+
+/*==================================================
+じわっ
+===================================*/
+
+.blur{
+  animation-name:blurAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes blurAnime{
+  from {
+  filter: blur(10px);
+  transform: scale(1.02);
+  opacity: 0;
+  }
+
+  to {
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  }
+}
+ 
+.blurTrigger{
+    opacity: 0;
+}
+
+
+/*========= 流れるテキスト ===============*/
+
+/*全共通*/
+
+.slide-in {
+  overflow: hidden;
+    display: inline-block;
+}
+
+.slide-in_inner {
+  display: inline-block;
+
+}
+
+/* 上下のアニメーション*/
+.downAnime{
+    opacity: 0;/* 事前に透過0 にして消しておく*/
+}
+
+.slideAnimeDownUp {
+    animation-name:slideTextY100;
+    animation-duration:0.8s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextY100 {
+    from {
+        transform: translateY(100%);/* 要素を上の枠外に移動*/
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);/* 要素を元の位置に移動*/
+        opacity: 1;
+    }
+}
+
+.slideAnimeUpDown {
+    animation-name:slideTextY-100;
+    animation-duration:0.8s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextY-100 {
+    from {
+        transform: translateY(-100%);/* 要素を下の枠外に移動*/
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);/* 要素を元の位置に移動*/
+        opacity: 1;
+    }
+}
+
+/*== 押し込む円 */
+
+.pushcircle{
+  /*周囲の線の起点とするためrelativeを指定*/
+position: relative;
+  /*円の形状*/
+width:90px;
+height:90px;
+  box-sizing: border-box;
+  padding: 0 10px;
+text-align: center;
+background:rgb(255, 255, 255);
+border-radius:50%;
+color: #333;
+border-color:#333;
+  text-decoration: none;
+  outline: none;
+  /*天地中央にテキストを配置*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+font-size: 30px;
+}
+
+/*内側の線*/
+.pushcircle:after {
+content: "→";
+color: #fff;
+font-size: 30px;
+padding: 13px 10px;
+text-align: center;
+  /*絶対配置で線の位置を決める*/
+position: absolute;
+top: 50%;
+left: 50%;
+  /*線の形状*/
+  width: 85%;
+height: 85%;
+border: 2px solid #333;
+border-radius: 50%;
+transform: translate(-50%, -50%) scale(1.1);
+  /*アニメーションの指定*/
+  transition: .3s ease; 
+}
+
+/*hoverをしたら枠線が小さくなる*/
+.pushcircle:hover:after {
+transform: translate(-50%, -50%) scale(1);
+  border-color:#333;
+  background:#333;
+color: #fff;
+}
+
+.pushcircle-class{
+  margin: 20px 10px 100px 250px;
+  display: flex;
+}
+
+.pushcircle-text{
+  font-size: 20px;
+  padding: 23px 50px 10px 0px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.pushcircle1{
+  /*周囲の線の起点とするためrelativeを指定*/
+position: relative;
+  /*円の形状*/
+width:90px;
+height:90px;
+  box-sizing: border-box;
+  padding: 0 10px;
+text-align: center;
+background:rgb(255, 255, 255);
+border-radius:50%;
+color: #333;
+border-color:#333;
+  text-decoration: none;
+  outline: none;
+  /*天地中央にテキストを配置*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+font-size: 30px;
+}
+
+/*内側の線*/
+.pushcircle1:after {
+content: "→";
+color: #fff;
+font-size: 30px;
+padding: 13px 10px;
+text-align: center;
+  /*絶対配置で線の位置を決める*/
+position: absolute;
+top: 50%;
+left: 50%;
+  /*線の形状*/
+  width: 85%;
+height: 85%;
+border: 2px solid #333;
+border-radius: 50%;
+transform: translate(-50%, -50%) scale(1.1);
+  /*アニメーションの指定*/
+  transition: .3s ease; 
+}
+
+/*hoverをしたら枠線が小さくなる*/
+.pushcircle1:hover:after {
+transform: translate(-50%, -50%) scale(1);
+  border-color:#333;
+  background:#333;
+color: #fff;
+}
+
+.pushcircle1-class{
+  margin: 50px 10px 10px 30px;
+  display: flex;
+}
+
+.pushcircle1-text{
+  font-size: 20px;
+  padding: 23px 50px 10px 0px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.grid10 {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 20px;
+  margin-bottom: 200px;
+}
+
+.grid11 {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: 200px;
+  margin-top: -20px;
+}
+
+
+.item10{
+  height: 380px;
+}
+
+.item10-p{
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 30px;
+  line-height: 17px;
+}
+
+.item10-title{
+  margin-bottom: 60px;
+}
+
+.item10-span{
+  font-size: 14px;
+}
+
+.item10-span1{
+font-weight: bold;
+  font-size: 14px;
+}
+
+.clear-menu{
+  display: flex;
+  text-align: center;
+}
+
+
+
+.flex10 {
+  display: flex; /*横並び*/
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+.flex10 .image {
+  width: 600px; /*画像サイズ指定*/
+  margin: 50px 130px 0px 0px ;
+  padding: 0;
+  position: relative;
+}
+.flex10 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex10 .right10 {
+  padding: 0;
+  text-align: left;
+  margin: 10px 30px 0px 120px;
+}
+
+.sample10-box {
+  position: relative;
+}
+.flex10 .title {
+  margin-top: 50px;
+  margin-left: 330px;
+  padding: 0;
+  font-size: 70px;
+  font-family: 'Cardo', serif;
+}
+
+.flex10 .text1{
+  margin-top: 80px;
+margin-left: 70px;
+  font-size: 30px;
+  font-family: 'Cardo', serif;
+}
+
+.flex10 .text2{
+  margin-top: 40px;
+  margin-left: 70px;
+}
+
+.flex10 .text3{
+  margin-top: 40px;
+  margin-left: 70px;
+  font-size: 20px;
+}
+
+.flex10 .text{
+  margin-top: 40px;
+  margin-left: 50px;
+  margin-right: 100px;
+}
+
+
+
+.right10-boder3{
+  border-width: 450px;
+  border-bottom: 3px double rgb(131, 131, 131);
+  margin-top: 100px;
+  margin-right: -120px;
+  margin-left: -50px;
+ 
+}
+
+.right10-boder4 {
+  margin-left: 20px;
+  margin-top: -500px;
+  height: 750px;
+  border:double 1px rgb(131, 131, 131);
+}
+
+.CPR1330A-3N10{
+  display: flex;
+}
+
+.pushcircle10-class{
+  margin: 20px 10px 0px 50px;
+  display: flex;
+}
+
+/*サービス*/
+.MEGANE2{
+  position: relative;
+}
+
+.MEGANE2 img {
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+  }
+
+.service{
+  font-size: 45px;
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  text-align: left;
+}
+
+.service2{
+  position: absolute;
+  top: 150px;
+  left: 250px;
+  text-align: left;
+}
+
+.flex-service{
+  display: flex; /*横並び*/
+  margin: 70px 100px 70px 100px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+.flex-service .image {
+  width: 742px; /*画像サイズ指定*/
+  margin: 50px 20px 10px 40px ;
+  padding: 0;
+  position: relative;
+}
+.flex-service .image img {
+  width: 100%;
+  height: auto;
+}
+.flex-service .right-service {
+  padding: 0;
+  text-align: left;
+  margin: 100px 30px 0px 40px;
+}
+
+.sample-service-box {
+  position: relative;
+}
+.flex-service .title {
+  padding: 0;
+  font-size: 20px;
+font-weight: bold;
+}
+
+.flex-service .text1{
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.flex-service .text2{
+  color: #c7002e;
+  margin-top: 30px;
+}
+
+.flex-service .text3{
+  font-size: 30px;
+}
+
+
+.btn2 {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 50px;
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+}
+.btn2-service {
+  color: #333;
+  background: #f4f4f4;
+  border: 1px solid #333;
+}
+.btn2-service:hover {
+  background: #333;
+  color: #ffffff;
+}
+
+.flex3-service3{
+  display: flex; /*横並び*/
+  margin: 70px 100px 70px 100px;
+  text-align: center;
+}
+.flex3-service3 .image {
+  width: 742px; /*画像サイズ指定*/
+  margin: 50px 0px 10px 40px ;
+  padding: 0;
+  position: relative;
+}
+.flex3-service3 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex3-service3 .right3-service3 {
+  padding: 0;
+  text-align: left;
+  margin: 100px 50px 0px 40px;
+}
+
+.left3-service3{
+  background-color: #f4f4f4;
+margin: 50px 0px 14px 0px;
+}
+
+.sample3-service3-box {
+  position: relative;
+}
+.flex3-service3 .title {
+  padding: 0;
+  font-size: 20px;
+font-weight: bold;
+}
+
+.flex3-service3 .text1{
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.flex3-service3 .text2{
+  color: #c7002e;
+  margin-top: 30px;
+}
+
+.flex3-service3 .text3{
+  font-size: 30px;
+}
+
+.flex4-service4{
+  display: flex; /*横並び*/
+  margin: 70px 100px 170px 100px;
+  text-align: center;
+}
+.flex4-service4 .image {
+  width: 742px; /*画像サイズ指定*/
+  margin: 50px 0px 10px 0px ;
+  padding: 0;
+  position: relative;
+}
+.flex4-service4 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex4-service4 .right4-service4 {
+  padding: 0;
+  text-align: left;
+  margin: 100px 50px 0px 40px;
+}
+
+.left4-service4{
+  background-color: #f4f4f4;
+margin: 50px 0px 14px 0px;
+}
+
+.sample4-service4-box {
+  position: relative;
+}
+.flex4-service4 .title {
+  padding: 0;
+  font-size: 20px;
+font-weight: bold;
+}
+
+.flex4-service4 .text1{
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.flex4-service4 .text2{
+  color: #c7002e;
+  margin-top: 30px;
+}
+
+.flex4-service4 .text3{
+  font-size: 30px;
+}
+
+/*モデル*/
+
+.model-back{
+  background-color:#faf0af ;
+}
+
+.MODEL{
+  position: relative;
+  background-color:#faf0af ;
+}
+
+.MODEL2 img {
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+  }
+
+.model{
+  font-size: 70px;
+  position: absolute;
+  top: 170px;
+  left: 200px;
+  text-align: left;
+  font-family: 'Cardo', serif;
+}
+
+.model2{
+  position: absolute;
+  top: 300px;
+  right: 260px;
+  text-align: left;
+  font-size: 30px;
+}
+
+
+.model-bg{
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+
+
+.flex-model{
+  display: flex; /*横並び*/
+  background-color: #fddc00;
+  text-align: center;
+}
+.flex-model .image {
+  width: 100%;
+  margin: 80px 20px 100px 160px ;
+  padding: 0;
+}
+.flex-model .image img {
+  width: 500px;
+  height: auto;
+}
+.flex-model .right-model{
+  padding: 0;
+  text-align: left;
+  margin: 170px 100px 0px 200px;
+}
+
+
+.flex-model .title {
+  padding: 0;
+  font-size: 40px;
+  line-height:1.5em;
+}
+
+.flex-model .text {
+  margin: 50px 130px 0 20px;
+  opacity: 1;
+  font-size: 20px;
+  letter-spacing: .08em;
+  line-height:1.5em;
+}
+
+.flex-model .text2 {
+  margin: 30px 130px 0 20px;
+  opacity: 1;
+  font-size: 14px;
+  letter-spacing: .08em;
+  line-height:1.5em;
+}
+
+.model-yellow{
+  background-color: #fddc00;
+}
+
+.model-one{
+  margin: 0px 50px 0px 80px;
+  text-align: right;
+  position: relative;
+}
+
+.model-one .text {
+  margin: 230px 130px 0 340px;
+  opacity: 1;
+  font-size: 35px;
+  letter-spacing: .08em;
+  line-height:1.5em;
+  position: absolute;
+  text-align: left;
+}
+
+.model-two{
+  margin: 100px 80px 0px 50px;
+  text-align: left;
+  position: relative;
+}
+
+.model-two .text {
+  margin: 250px 150px 0 650px;
+  opacity: 1;
+  font-size: 35px;
+  letter-spacing: .08em;
+  line-height:1.5em;
+  position: absolute;
+  text-align: left;
+}
+
+.SU1012-upe1{
+  display: flex;
+}
+
+.SU1012-upe1 .title2{
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.SU1012-upe1 .title3{
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 20px;
+  line-height:1em;
+}
+
+.COLOR{
+  font-size: 14px;
+}
+
+.flex-model10{
+  display: flex; /*横並び*/
+  margin: -20px 100px 100px 100px;
+  text-align: center;
+}
+.flex-model10 .image {
+  width: 667px; /*画像サイズ指定*/
+  margin: 50px 20px 0px 40px ;
+  padding: 0;
+  position: relative;
+}
+.flex-model10 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex-model10 .right-model10 {
+  padding: 0;
+  text-align: left;
+  margin: 100px 30px 0px 70px;
+}
+
+.sample-model10-box {
+  position: relative;
+}
+.flex-model10 .title {
+  padding: 0;
+  font-size: 30px;
+  font-family: 'Cardo', serif;
+}
+
+.flex-model10 .text{
+  margin-top: 30px;
+}
+
+.supple-model-11{
+  margin-top: -250px;
+margin-right: 150px;
+text-align: right;
+}
+
+.supple-model-12{
+  margin-top: -300px;
+margin-left: 150px;
+text-align: left;
+}
+
+
+
+
+.btn14300{
+  /*影の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  text-align: center;
+  background: transparent;
+border-radius: 25px;
+border: solid 1px #205dac;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: all 0.2s ease;
+  margin: 30px 0 0px 30px;
+  font-weight: bold;
+}
+
+/*hoverをした後のボタンの形状*/
+.btn14300:hover{
+border-color:transparent; 
+}
+
+/*ボタンの中のテキスト*/
+.btn14300 span {
+position: relative;
+z-index: 2;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  /*テキストの形状*/
+display: block;
+  padding: 10px 60px;
+background:#205dac;
+border-radius: 25px;
+color:rgb(255, 255, 255);
+  /*アニメーションの指定*/
+  transition: all 0.3s ease;
+}
+
+/*== 下に押し込まれる（立体が平面に） */
+
+/*影の設定*/
+.pushdown14300:before {
+  content:"";
+  /*絶対配置で影の位置を決める*/
+  position: absolute;
+z-index: -1;
+  top:4px;
+  left:0;
+  /*影の形状*/
+  width: 100%;
+  height: 100%;
+border-radius: 25px;
+  background-color: #00285c;
+}
+
+/*hoverの際にY軸に4pxずらす*/
+.pushdown14300:hover span {
+background-color: #207dac;
+color: #fff;
+transform: translateY(4px);
+}
+
+.btn2020{
+  /*影の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  text-align: center;
+  background: transparent;
+border-radius: 25px;
+border: solid 1px #205dac;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: all 0.2s ease;
+  margin: 30px 0 0px 0px;
+  font-weight: bold;
+}
+
+/*hoverをした後のボタンの形状*/
+.btn2020:hover{
+border-color:transparent; 
+}
+
+/*ボタンの中のテキスト*/
+.btn2020 span {
+position: relative;
+z-index: 2;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  /*テキストの形状*/
+display: block;
+  padding: 10px 60px;
+background:#205dac;
+border-radius: 25px;
+color:rgb(255, 255, 255);
+  /*アニメーションの指定*/
+  transition: all 0.3s ease;
+}
+
+/*== 下に押し込まれる（立体が平面に） */
+
+/*影の設定*/
+.pushdown2020:before {
+  content:"";
+  /*絶対配置で影の位置を決める*/
+  position: absolute;
+z-index: -1;
+  top:4px;
+  left:0;
+  /*影の形状*/
+  width: 100%;
+  height: 100%;
+border-radius: 25px;
+  background-color: #00285c;
+}
+
+/*hoverの際にY軸に4pxずらす*/
+.pushdown2020:hover span {
+background-color: #207dac;
+color: #fff;
+transform: translateY(4px);
+}
+
+.supple-btn14300{
+  margin-top: -10px;
+  margin-right: 270px;
+  text-align: right;
+}
+
+.supple-btn1430012{
+  margin-top: -50px;
+  margin-left: 270px;
+  text-align: left;
+}
+
+.supple-btn2020{
+  margin-top: -10px;
+}
+
+
+.flex-model20{
+  display: flex; /*横並び*/
+  margin: 100px 100px 20px 100px;
+  text-align: center;
+}
+.flex-model20 .image {
+  width: 426px; /*画像サイズ指定*/
+  margin: 30px 0px 100px 80px ;
+  padding: 0;
+  position: relative;
+}
+.flex-model20 .image img {
+  width: 100%;
+  height: auto;
+}
+.flex-model20 .right-model20 {
+  padding: 0;
+  text-align: left;
+  margin:0px;
+}
+
+.sample-model20-box {
+  position: relative;
+}
+.flex-model20 .title {
+  padding: 0;
+  font-size: 50px;
+  font-family: 'Cardo', serif;
+}
+
+.flex-model20 .text{
+  margin-top: 30px;
+  text-align: left;
+}
+
+.flex-model2020{
+  border: 5px dotted #205dac;
+  margin: 100px 200px 200px 200px;
+  border-radius: 50px;
+}
+
+
+
+
+
+
