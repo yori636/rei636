@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+/*共通部分
+---------------------------------*/
+body{
+    font-family: "Yu ]gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","ヒラギノ角ゴ Pro W3",sans-serif;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  
+  /*========= 上部固定させるためのCSS ===============*/
+  #header{
+    height: 70px;/*高さ指定*/
+    width:100%;/*横幅指定*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /*JSを使いfixedクラスが付与された際の設定*/
+  #header.fixed{
+    position: fixed;/*fixedを設定して固定*/
+      z-index: 999;/*最前面へ*/
+      top:0;/*位置指定*/
+      left:0;/*位置指定*/
+  }
+  
+  
+  /*========= レイアウトのためのCSS ===============*/
+  .logo {
+    width: 210px;
+    margin-top: 14px;
+  }
+  
+  p{
+    margin-top:20px;  
+  }
+  
+  small{
+    background:#333;
+    color:#fff;
+    display: block;
+    padding:30px;
+  }
+  
+  .footer-nav {
+    display: flex;
+    background:#333;
+    color:#fff;
+    justify-content: center;
+  }
+  .footer-nav li {
+    margin: 0 .75rem;
+    list-style: none;
+    padding:30px;
+  }
+  .footer-nav a:hover {
+    color: rgb(128, 119, 119);
+  }
+  .footer-nav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding:10px;
+    transition:all 0.3s;
+  }
+  
+  nav ul li.current a,
+  nav ul li a:hover{
+    color:#666; 
+  }
+
+/*===モーダル表示のためのcss　*/
+
+.hide-area{/*モーダル表示をする場所をあらかじめ隠す*/
+  display: none;
+}
+
+.modaal-fullscreen .modaal-content-container{/*full画面の色設定*/
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.modaal-fullscreen .modaal-close{/*ボタンの色、位置*/
+  background:none;
+  right:20px;
+}
+
+.gallery-one{
+  display: flex;
+  text-align: center;
+  margin: 250px 0 250px 400px;
+}
+
+/*クローズボタンの×の色変更*/
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before{
+  background:#666;
+}
+
+/*キャプション*/
+.caption{
+    display: block;
+    padding: 20px 20px;
+}
+
+/*===　サムネイル表示のためのcss　*/
+
+.gallery{/*ベースになるギャラリーを横並びに*/
+  display: flex;
+    justify-content: space-between;
+}
+
+.gallery li{
+  width:33.333%;
+    padding: 0 10px;
+}
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+img{
+  max-width:100%;
+  height:auto;
+  vertical-align: bottom;/*画像の下にできる余白を削除*/
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  a{
+    color: #333;
+  }
+  
+  span{
+    color: rgb(255, 255, 255);
+  }
+  
+  p.small{
+    line-height:90%;
+    }
+  
+  a:hover,
+  a:active{
+    text-decoration: none;
+  }
+  
+  h1{
+    font-family:'Cardo', serif;
+    text-align: center;
+    font-size:6vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin:30px 0;
+    color: #333;     /* 文字色指定 */
+  }
+  
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    list-style:none
+  }
+
+/*========= ブランド ===============*/
+  .picup23 {
+    font-size: 2em;
+    margin-top: 90px;
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    margin-bottom:30px;
+  }
+  
+  .BRAND{
+    margin:50px 20px 200px 0px;
+    text-align: center;
+  }
